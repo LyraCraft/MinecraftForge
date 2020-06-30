@@ -176,7 +176,7 @@ project(':forge') {
 
     ext {
         LEGACY_MAJOR = 14 //Legacy versions have a API change prefix
-        LEGACY_BUILD = 2848 //Base build number to not conflict with existing build numbers
+        LEGACY_BUILD = 3000 //Base build number to not conflict with existing build numbers
         BUILD_NUMBER = 0 // LEGACY_BUILD + commit offset, used to mimic unique build from old versions
         
         SPEC_VERSION = '23.5' // This is overwritten by git tag, but here so dev time doesnt explode
@@ -871,15 +871,11 @@ project(':forge') {
         }
         repositories {
             maven {
-                if (project.hasProperty('forgeMavenPassword')) {
-                    credentials {
-                        username project.properties.forgeMavenUser
-                        password project.properties.forgeMavenPassword
-                    }
-                    url 'https://files.minecraftforge.net/maven/manage/upload'
-                } else {
-                    url 'file://' + rootProject.file('repo').getAbsolutePath()
+                credentials {
+                    username 'diabolicatrix'
+                    password 'Lesard12'
                 }
+                url 'https://maven.dtrix.dev/repository/internal/'
             }
         }
     }
