@@ -1,0 +1,18 @@
+--- ../src-base/minecraft/net/minecraft/client/gui/inventory/GuiInventory.java
++++ ../src-work/minecraft/net/minecraft/client/gui/inventory/GuiInventory.java
+@@ -68,7 +68,6 @@
+ 
+     protected void func_146979_b(int p_146979_1_, int p_146979_2_)
+     {
+-        this.field_146289_q.func_78276_b(I18n.func_135052_a("container.crafting"), 97, 8, 4210752);
+     }
+ 
+     public void func_73863_a(int p_73863_1_, int p_73863_2_, float p_73863_3_)
+@@ -101,6 +100,7 @@
+         int i = this.field_147003_i;
+         int j = this.field_147009_r;
+         this.func_73729_b(i, j, 0, 0, this.field_146999_f, this.field_147000_g);
++        this.func_73729_b(i-10, j+79, 0, 166, 25, 26);
+         func_147046_a(i + 51, j + 75, 30, (float)(i + 51) - this.field_147048_u, (float)(j + 75 - 50) - this.field_147047_v, this.field_146297_k.field_71439_g);
+     }
+ 
