@@ -315,7 +315,7 @@ project(':forge') {
         rootProject.file('CREDITS.txt'),
         rootProject.file('LICENSE.txt'),
         rootProject.file('LICENSE-Paulscode IBXM Library.txt'),
-        rootProject.file('LICENSE-Paulscode SoundSystem CodecIBXM.txt')
+        rootProject.file('LICENSE-Paulscode ddSoundSystem CodecIBXM.txt')
     ]
     
     def changelog = rootProject.file('build/changelog.txt')
