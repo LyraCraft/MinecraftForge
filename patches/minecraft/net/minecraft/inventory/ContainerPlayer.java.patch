@@ -1,5 +1,14 @@
 --- ../src-base/minecraft/net/minecraft/inventory/ContainerPlayer.java
 +++ ../src-work/minecraft/net/minecraft/inventory/ContainerPlayer.java
+@@ -35,7 +35,7 @@
+         for (int k = 0; k < 4; ++k)
+         {
+             final EntityEquipmentSlot entityequipmentslot = field_185003_h[k];
+-            this.func_75146_a(new Slot(p_i1819_1_, 36 + (3 - k), 8, 8 + k * 18)
++            this.func_75146_a(new Slot(p_i1819_1_, p_i1819_1_.field_70462_a.size() + (3 - k), 8, 8 + k * 18)
+             {
+                 public int func_75219_a()
+                 {
 @@ -43,7 +43,7 @@
                  }
                  public boolean func_75214_a(ItemStack p_75214_1_)
@@ -9,3 +18,110 @@
                  }
                  public boolean func_82869_a(EntityPlayer p_82869_1_)
                  {
+@@ -59,7 +59,7 @@
+             });
+         }
+ 
+-        for (int l = 0; l < 3; ++l)
++        for (int l = 0; l < ((p_i1819_1_.field_70462_a.size() / 9)-1); ++l)
+         {
+             for (int j1 = 0; j1 < 9; ++j1)
+             {
+@@ -72,7 +72,7 @@
+             this.func_75146_a(new Slot(p_i1819_1_, i1, 8 + i1 * 18, 142));
+         }
+ 
+-        this.func_75146_a(new Slot(p_i1819_1_, 40, 77, 62)
++        this.func_75146_a(new Slot(p_i1819_1_, p_i1819_1_.field_70462_a.size() + 4, 77, 62)
+         {
+             @Nullable
+             @SideOnly(Side.CLIENT)
+@@ -81,6 +81,26 @@
+                 return "minecraft:items/empty_armor_slot_shield";
+             }
+         });
++
++        this.func_75146_a(new Slot(p_i1819_1_, p_i1819_1_.field_70462_a.size() + 5, -16, 84)
++        {
++            public int func_75219_a()
++            {
++                return 1;
++            }
++
++            public boolean func_75214_a(ItemStack stack)
++            {
++                return stack.func_77973_b().isValidArmor(stack, EntityEquipmentSlot.BACKPACK, field_82862_h);
++            }
++
++            @Nullable
++            @SideOnly(Side.CLIENT)
++            public String func_178171_c()
++            {
++                return "minecraft:items/empty_armor_slot_shield";
++            }
++        });
+     }
+ 
+     public void func_75130_a(IInventory p_75130_1_)
+@@ -117,7 +137,7 @@
+ 
+             if (p_82846_2_ == 0)
+             {
+-                if (!this.func_75135_a(itemstack1, 9, 45, true))
++                if (!this.func_75135_a(itemstack1, 9, p_82846_1_.field_71071_by.field_70462_a.size() + 9, true))
+                 {
+                     return ItemStack.field_190927_a;
+                 }
+@@ -126,14 +146,14 @@
+             }
+             else if (p_82846_2_ >= 1 && p_82846_2_ < 5)
+             {
+-                if (!this.func_75135_a(itemstack1, 9, 45, false))
++                if (!this.func_75135_a(itemstack1, 9, p_82846_1_.field_71071_by.field_70462_a.size() + 9, false))
+                 {
+                     return ItemStack.field_190927_a;
+                 }
+             }
+             else if (p_82846_2_ >= 5 && p_82846_2_ < 9)
+             {
+-                if (!this.func_75135_a(itemstack1, 9, 45, false))
++                if (!this.func_75135_a(itemstack1, 9, p_82846_1_.field_71071_by.field_70462_a.size() + 9, false))
+                 {
+                     return ItemStack.field_190927_a;
+                 }
+@@ -147,28 +167,28 @@
+                     return ItemStack.field_190927_a;
+                 }
+             }
+-            else if (entityequipmentslot == EntityEquipmentSlot.OFFHAND && !((Slot)this.field_75151_b.get(45)).func_75216_d())
++            else if (entityequipmentslot == EntityEquipmentSlot.OFFHAND && !((Slot)this.field_75151_b.get(p_82846_1_.field_71071_by.field_70462_a.size() + 9)).func_75216_d())
+             {
+-                if (!this.func_75135_a(itemstack1, 45, 46, false))
++                if (!this.func_75135_a(itemstack1, p_82846_1_.field_71071_by.field_70462_a.size() + 9, p_82846_1_.field_71071_by.field_70462_a.size() + 10, false))
+                 {
+                     return ItemStack.field_190927_a;
+                 }
+             }
+-            else if (p_82846_2_ >= 9 && p_82846_2_ < 36)
++            else if (p_82846_2_ >= 9 && p_82846_2_ < p_82846_1_.field_71071_by.field_70462_a.size())
+             {
+-                if (!this.func_75135_a(itemstack1, 36, 45, false))
++                if (!this.func_75135_a(itemstack1, p_82846_1_.field_71071_by.field_70462_a.size(), p_82846_1_.field_71071_by.field_70462_a.size() + 9, false))
+                 {
+                     return ItemStack.field_190927_a;
+                 }
+             }
+-            else if (p_82846_2_ >= 36 && p_82846_2_ < 45)
++            else if (p_82846_2_ >= p_82846_1_.field_71071_by.field_70462_a.size() && p_82846_2_ < (p_82846_1_.field_71071_by.field_70462_a.size() + 9))
+             {
+-                if (!this.func_75135_a(itemstack1, 9, 36, false))
++                if (!this.func_75135_a(itemstack1, 9, p_82846_1_.field_71071_by.field_70462_a.size(), false))
+                 {
+                     return ItemStack.field_190927_a;
+                 }
+             }
+-            else if (!this.func_75135_a(itemstack1, 9, 45, false))
++            else if (!this.func_75135_a(itemstack1, 9, p_82846_1_.field_71071_by.field_70462_a.size() + 9, false))
+             {
+                 return ItemStack.field_190927_a;
+             }

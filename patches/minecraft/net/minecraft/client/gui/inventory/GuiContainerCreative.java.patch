@@ -9,6 +9,28 @@
  
      public GuiContainerCreative(EntityPlayer p_i1088_1_)
      {
+@@ -232,18 +234,18 @@
+                 {
+                     for (int k = 0; k < 9; ++k)
+                     {
+-                        this.field_146297_k.field_71442_b.func_78761_a(this.field_147002_h.func_75139_a(45 + k).func_75211_c(), 36 + k);
++                        this.field_146297_k.field_71442_b.func_78761_a(this.field_147002_h.func_75139_a(this.field_146297_k.field_71439_g.field_71071_by.field_70462_a.size() + 9 + k).func_75211_c(), this.field_146297_k.field_71439_g.field_71071_by.field_70462_a.size() + k);
+                     }
+                 }
+                 else if (p_184098_1_ != null)
+                 {
+                     ItemStack itemstack4 = this.field_147002_h.func_75139_a(p_184098_1_.field_75222_d).func_75211_c();
+-                    this.field_146297_k.field_71442_b.func_78761_a(itemstack4, p_184098_1_.field_75222_d - this.field_147002_h.field_75151_b.size() + 9 + 36);
++                    this.field_146297_k.field_71442_b.func_78761_a(itemstack4, p_184098_1_.field_75222_d - this.field_147002_h.field_75151_b.size() + 9 + this.field_146297_k.field_71439_g.field_71071_by.field_70462_a.size());
+                     int i = 45 + p_184098_3_;
+ 
+                     if (p_184098_4_ == ClickType.SWAP)
+                     {
+-                        this.field_146297_k.field_71442_b.func_78761_a(itemstack3, i - this.field_147002_h.field_75151_b.size() + 9 + 36);
++                        this.field_146297_k.field_71442_b.func_78761_a(itemstack3, i - this.field_147002_h.field_75151_b.size() + 9 + this.field_146297_k.field_71439_g.field_71071_by.field_70462_a.size());
+                     }
+                     else if (p_184098_4_ == ClickType.THROW && !itemstack3.func_190926_b())
+                     {
 @@ -287,6 +289,13 @@
              this.func_147050_b(CreativeTabs.field_78032_a[i]);
              this.field_147059_E = new CreativeCrafting(this.field_146297_k);
@@ -103,7 +125,31 @@
          int i = field_147058_w;
          field_147058_w = p_147050_1_.func_78021_a();
          GuiContainerCreative.ContainerCreative guicontainercreative$containercreative = (GuiContainerCreative.ContainerCreative)this.field_147002_h;
-@@ -524,12 +563,14 @@
+@@ -490,10 +529,13 @@
+                     slot.field_75223_e = -2000;
+                     slot.field_75221_f = -2000;
+                 }
+-                else if (l == 45)
++                else if (l == (this.field_146297_k.field_71439_g.field_71071_by.field_70462_a.size() + 9))
+                 {
+                     slot.field_75223_e = 35;
+                     slot.field_75221_f = 20;
++                } else if (l == (this.field_146297_k.field_71439_g.field_71071_by.field_70462_a.size() + 10)) {
++                    slot.field_75223_e = -16;
++                    slot.field_75221_f = 54;
+                 }
+                 else if (l < container.field_75151_b.size())
+                 {
+@@ -502,7 +544,7 @@
+                     int i2 = i1 / 9;
+                     slot.field_75223_e = 9 + k1 * 18;
+ 
+-                    if (l >= 36)
++                    if (l >= this.field_146297_k.field_71439_g.field_71071_by.field_70462_a.size())
+                     {
+                         slot.field_75221_f = 112;
+                     }
+@@ -524,12 +566,14 @@
  
          if (this.field_147062_A != null)
          {
@@ -119,7 +165,7 @@
                  this.func_147053_i();
              }
              else
-@@ -601,19 +642,43 @@
+@@ -601,19 +645,43 @@
  
          super.func_73863_a(p_73863_1_, p_73863_2_, p_73863_3_);
  
@@ -164,7 +210,7 @@
          GlStateManager.func_179131_c(1.0F, 1.0F, 1.0F, 1.0F);
          GlStateManager.func_179140_f();
          this.func_191948_b(p_73863_1_, p_73863_2_);
-@@ -654,7 +719,7 @@
+@@ -654,7 +722,7 @@
              {
                  if (i == 0)
                  {
@@ -173,7 +219,7 @@
                  }
                  else
                  {
-@@ -662,7 +727,10 @@
+@@ -662,7 +730,10 @@
                  }
              }
  
@@ -185,7 +231,7 @@
          }
          else
          {
-@@ -676,17 +744,36 @@
+@@ -676,17 +747,36 @@
          RenderHelper.func_74520_c();
          CreativeTabs creativetabs = CreativeTabs.field_78032_a[field_147058_w];
  
@@ -224,7 +270,7 @@
          this.func_73729_b(this.field_147003_i, this.field_147009_r, 0, 0, this.field_146999_f, this.field_147000_g);
          this.field_147062_A.func_146194_f();
          GlStateManager.func_179131_c(1.0F, 1.0F, 1.0F, 1.0F);
-@@ -700,6 +787,14 @@
+@@ -700,6 +790,14 @@
              this.func_73729_b(i, j + (int)((float)(k - j - 17) * this.field_147067_x), 232 + (this.func_147055_p() ? 0 : 12), 0, 12, 15);
          }
  
@@ -239,7 +285,7 @@
          this.func_147051_a(creativetabs);
  
          if (creativetabs == CreativeTabs.field_78036_m)
-@@ -710,6 +805,14 @@
+@@ -710,6 +808,14 @@
  
      protected boolean func_147049_a(CreativeTabs p_147049_1_, int p_147049_2_, int p_147049_3_)
      {
@@ -254,7 +300,7 @@
          int i = p_147049_1_.func_78020_k();
          int j = 28 * i;
          int k = 0;
-@@ -806,6 +909,8 @@
+@@ -806,6 +912,8 @@
          }
  
          GlStateManager.func_179140_f();
@@ -263,7 +309,7 @@
          this.func_73729_b(l, i1, j, k, 28, 32);
          this.field_73735_i = 100.0F;
          this.field_146296_j.field_77023_b = 100.0F;
-@@ -827,6 +932,15 @@
+@@ -827,6 +935,15 @@
          {
              this.field_146297_k.func_147108_a(new GuiStats(this, this.field_146297_k.field_71439_g.func_146107_m()));
          }
@@ -279,7 +325,16 @@
      }
  
      public int func_147056_g()
-@@ -1031,6 +1145,39 @@
+@@ -846,7 +963,7 @@
+             {
+                 ItemStack itemstack = ((ItemStack)hotbarsnapshot.get(i)).func_77946_l();
+                 entityplayersp.field_71071_by.func_70299_a(i, itemstack);
+-                p_192044_0_.field_71442_b.func_78761_a(itemstack, 36 + i);
++                p_192044_0_.field_71442_b.func_78761_a(itemstack, entityplayersp.field_71071_by.field_70462_a.size() + i);
+             }
+ 
+             entityplayersp.field_71069_bz.func_75142_b();
+@@ -1031,6 +1148,39 @@
          {
              return this.field_148332_b.func_82869_a(p_82869_1_);
          }
